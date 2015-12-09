@@ -5,10 +5,10 @@ public class Commande {
 	private String etat_comande;
 	private String ref_annonce;
 
-	private void creer(){
+	void creer(){
 		
 	}
-	private void changer_etat(){
-		
+	void changer_etat(){
+		System.out.println("Tu viens de changer l'état de la commande, bravo !");
 	}
 }

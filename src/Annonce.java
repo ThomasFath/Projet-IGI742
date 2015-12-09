@@ -4,13 +4,13 @@ public class Annonce {
 	private String description_Annonce;
 	private String categorie;
 	
-	private void ajouter(){
+	void ajouter(){
+		System.out.println("Tu viens d'ajouter l'Annonce.");
+	};
+	void modifier(){
 		
 	};
-	private void modifier(){
-		
-	};
-	private void supprimer(){
+	void supprimer(){
 		
 	};
 }

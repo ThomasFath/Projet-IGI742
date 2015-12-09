@@ -4,13 +4,15 @@ public class Administateur {
 	private String prenom_administrateur;
 	private String mail_administrateur;
 	
-	private void gerer_compte(){
+	public static void gerer_compte(){
 		
 	};
-	private void gerer_utilisateur(){
+	
+	public static void gerer_utilisateur(){
 		
 	};
-	private void gerer_annonce(){
+	
+	public static void gerer_annonce(){
 		
 	};
 	
