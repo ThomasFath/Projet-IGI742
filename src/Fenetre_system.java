@@ -1,12 +1,10 @@
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JInternalFrame;
@@ -20,286 +18,315 @@ import javax.swing.JList;
 import javax.swing.JTabbedPane;
 import javax.swing.JEditorPane;
 import javax.swing.JPasswordField;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.awt.event.ActionEvent;
-import java.awt.Font;
-// Fenetre associe au system
+
 public class Fenetre_system extends JFrame {
-	private JTextField LoginCo;
+
+	private JPanel contentPane;
+	private JTextField LoginTf;
 	private JTextField NomIns;
 	private JTextField PrenomIns;
 	private JTextField EmailIns;
 	private JTextField NumEtuIns;
 	private JTextField NumTelIns;
-	private JPasswordField MdpCo;
-	private JTextField LoginIns;
-	private JPasswordField Mdp1;
-	private JPasswordField Mdp2;
-	private SystemPartage s1;
-	
-// Constructeur fenetre	
-	public Fenetre_system(SystemPartage S) {	
-			s1=S;
+	private JTextField Mdp1;
+	private JTextField Mdp2;
+	private JPasswordField passwordField;
+	private JTextField textField;
+	private JTextField textField_1;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Fenetre_system frame = new Fenetre_system();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Fenetre_system() {
+			
 			setResizable(false);
-			setSize(542, 489);
+			
+			
+			setSize(1124, 832);
 			SpringLayout springLayout = new SpringLayout();
+			
 			getContentPane().setLayout(springLayout);
+			
+			JList list = new JList();
+			springLayout.putConstraint(SpringLayout.NORTH, list, 57, SpringLayout.NORTH, getContentPane());
+			springLayout.putConstraint(SpringLayout.WEST, list, 561, SpringLayout.WEST, getContentPane());
+			springLayout.putConstraint(SpringLayout.SOUTH, list, -437, SpringLayout.SOUTH, getContentPane());
+			springLayout.putConstraint(SpringLayout.EAST, list, -21, SpringLayout.EAST, getContentPane());
+			getContentPane().add(list);
+			
 			JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 			springLayout.putConstraint(SpringLayout.NORTH, tabbedPane, 10, SpringLayout.NORTH, getContentPane());
 			springLayout.putConstraint(SpringLayout.WEST, tabbedPane, 75, SpringLayout.WEST, getContentPane());
-			springLayout.putConstraint(SpringLayout.SOUTH, tabbedPane, -51, SpringLayout.SOUTH, getContentPane());
+			springLayout.putConstraint(SpringLayout.SOUTH, tabbedPane, -396, SpringLayout.SOUTH, getContentPane());
 			springLayout.putConstraint(SpringLayout.EAST, tabbedPane, 448, SpringLayout.WEST, getContentPane());
-			this.setTitle("Serveur de connexion");
 			getContentPane().add(tabbedPane);
-/////////////////////////////////// Partie graphique connexion ////////////////////////////////////////////////////	
+			
+			JPanel Inscriptionl = new JPanel();
+			tabbedPane.addTab("Inscription", null, Inscriptionl, null);
+			SpringLayout sl_Inscriptionl = new SpringLayout();
+			Inscriptionl.setLayout(sl_Inscriptionl);
+			
+			JButton btnInscription = new JButton("Inscription");
+			sl_Inscriptionl.putConstraint(SpringLayout.SOUTH, btnInscription, -10, SpringLayout.SOUTH, Inscriptionl);
+			sl_Inscriptionl.putConstraint(SpringLayout.EAST, btnInscription, -81, SpringLayout.EAST, Inscriptionl);
+			Inscriptionl.add(btnInscription);
+			
+			NomIns = new JTextField();
+			Inscriptionl.add(NomIns);
+			NomIns.setColumns(10);
+			
+			PrenomIns = new JTextField();
+			sl_Inscriptionl.putConstraint(SpringLayout.NORTH, PrenomIns, 44, SpringLayout.NORTH, Inscriptionl);
+			sl_Inscriptionl.putConstraint(SpringLayout.WEST, PrenomIns, 156, SpringLayout.WEST, Inscriptionl);
+			sl_Inscriptionl.putConstraint(SpringLayout.SOUTH, NomIns, -6, SpringLayout.NORTH, PrenomIns);
+			sl_Inscriptionl.putConstraint(SpringLayout.EAST, NomIns, 0, SpringLayout.EAST, PrenomIns);
+			PrenomIns.setColumns(10);
+			Inscriptionl.add(PrenomIns);
+			
+			EmailIns = new JTextField();
+			sl_Inscriptionl.putConstraint(SpringLayout.NORTH, EmailIns, 70, SpringLayout.NORTH, Inscriptionl);
+			sl_Inscriptionl.putConstraint(SpringLayout.SOUTH, PrenomIns, -6, SpringLayout.NORTH, EmailIns);
+			EmailIns.setColumns(10);
+			Inscriptionl.add(EmailIns);
+			
+			NumEtuIns = new JTextField();
+			sl_Inscriptionl.putConstraint(SpringLayout.SOUTH, EmailIns, -6, SpringLayout.NORTH, NumEtuIns);
+			sl_Inscriptionl.putConstraint(SpringLayout.NORTH, NumEtuIns, 96, SpringLayout.NORTH, Inscriptionl);
+			sl_Inscriptionl.putConstraint(SpringLayout.WEST, NumEtuIns, 0, SpringLayout.WEST, NomIns);
+			sl_Inscriptionl.putConstraint(SpringLayout.EAST, NumEtuIns, -126, SpringLayout.EAST, Inscriptionl);
+			Inscriptionl.add(NumEtuIns);
+			NumEtuIns.setColumns(10);
+			
+			NumTelIns = new JTextField();
+			sl_Inscriptionl.putConstraint(SpringLayout.NORTH, NumTelIns, 6, SpringLayout.SOUTH, NumEtuIns);
+			sl_Inscriptionl.putConstraint(SpringLayout.WEST, NumTelIns, 156, SpringLayout.WEST, Inscriptionl);
+			NumTelIns.setColumns(10);
+			Inscriptionl.add(NumTelIns);
+			
+			Mdp1 = new JTextField();
+			sl_Inscriptionl.putConstraint(SpringLayout.SOUTH, NumTelIns, -7, SpringLayout.NORTH, Mdp1);
+			sl_Inscriptionl.putConstraint(SpringLayout.NORTH, Mdp1, 149, SpringLayout.NORTH, Inscriptionl);
+			sl_Inscriptionl.putConstraint(SpringLayout.WEST, Mdp1, 0, SpringLayout.WEST, NomIns);
+			sl_Inscriptionl.putConstraint(SpringLayout.EAST, Mdp1, -126, SpringLayout.EAST, Inscriptionl);
+			Mdp1.setColumns(10);
+			Inscriptionl.add(Mdp1);
+			
+			Mdp2 = new JTextField();
+			sl_Inscriptionl.putConstraint(SpringLayout.NORTH, Mdp2, 5, SpringLayout.SOUTH, Mdp1);
+			sl_Inscriptionl.putConstraint(SpringLayout.WEST, Mdp2, 0, SpringLayout.WEST, NomIns);
+			sl_Inscriptionl.putConstraint(SpringLayout.EAST, Mdp2, -126, SpringLayout.EAST, Inscriptionl);
+			Mdp2.setColumns(10);
+			Inscriptionl.add(Mdp2);
+			
+			JTextPane textPane = new JTextPane();
+			sl_Inscriptionl.putConstraint(SpringLayout.SOUTH, Mdp2, -6, SpringLayout.NORTH, textPane);
+			sl_Inscriptionl.putConstraint(SpringLayout.NORTH, textPane, 200, SpringLayout.NORTH, Inscriptionl);
+			sl_Inscriptionl.putConstraint(SpringLayout.SOUTH, textPane, -11, SpringLayout.NORTH, btnInscription);
+			sl_Inscriptionl.putConstraint(SpringLayout.SOUTH, Mdp1, -31, SpringLayout.NORTH, textPane);
+			sl_Inscriptionl.putConstraint(SpringLayout.SOUTH, NumEtuIns, -84, SpringLayout.NORTH, textPane);
+			sl_Inscriptionl.putConstraint(SpringLayout.WEST, textPane, -70, SpringLayout.WEST, btnInscription);
+			sl_Inscriptionl.putConstraint(SpringLayout.EAST, textPane, -26, SpringLayout.EAST, Inscriptionl);
+			Inscriptionl.add(textPane);
+			
+			JLabel lblDescription = new JLabel("Description :");
+			sl_Inscriptionl.putConstraint(SpringLayout.NORTH, lblDescription, 0, SpringLayout.NORTH, textPane);
+			sl_Inscriptionl.putConstraint(SpringLayout.WEST, lblDescription, 49, SpringLayout.WEST, Inscriptionl);
+			sl_Inscriptionl.putConstraint(SpringLayout.EAST, lblDescription, -6, SpringLayout.WEST, textPane);
+			Inscriptionl.add(lblDescription);
+			
+			JLabel lblNom = new JLabel("Nom :");
+			sl_Inscriptionl.putConstraint(SpringLayout.NORTH, lblNom, 19, SpringLayout.NORTH, Inscriptionl);
+			sl_Inscriptionl.putConstraint(SpringLayout.WEST, lblNom, 49, SpringLayout.WEST, Inscriptionl);
+			sl_Inscriptionl.putConstraint(SpringLayout.EAST, lblNom, -54, SpringLayout.WEST, NomIns);
+			Inscriptionl.add(lblNom);
+			
+			JLabel lblPrenom = new JLabel("Prenom :");
+			sl_Inscriptionl.putConstraint(SpringLayout.SOUTH, lblNom, -10, SpringLayout.NORTH, lblPrenom);
+			sl_Inscriptionl.putConstraint(SpringLayout.NORTH, lblPrenom, 3, SpringLayout.NORTH, PrenomIns);
+			sl_Inscriptionl.putConstraint(SpringLayout.WEST, lblPrenom, 47, SpringLayout.WEST, Inscriptionl);
+			Inscriptionl.add(lblPrenom);
+			
+			JLabel lblEmail = new JLabel("Email :");
+			sl_Inscriptionl.putConstraint(SpringLayout.WEST, lblEmail, 46, SpringLayout.WEST, Inscriptionl);
+			sl_Inscriptionl.putConstraint(SpringLayout.EAST, lblEmail, -266, SpringLayout.EAST, Inscriptionl);
+			sl_Inscriptionl.putConstraint(SpringLayout.WEST, EmailIns, 54, SpringLayout.EAST, lblEmail);
+			sl_Inscriptionl.putConstraint(SpringLayout.NORTH, lblEmail, 3, SpringLayout.NORTH, EmailIns);
+			sl_Inscriptionl.putConstraint(SpringLayout.SOUTH, lblEmail, -113, SpringLayout.NORTH, textPane);
+			Inscriptionl.add(lblEmail);
+			
+			JLabel lblNumeroEtudiant = new JLabel("Numero Etudiant :");
+			sl_Inscriptionl.putConstraint(SpringLayout.NORTH, lblNumeroEtudiant, 12, SpringLayout.SOUTH, lblEmail);
+			sl_Inscriptionl.putConstraint(SpringLayout.EAST, lblPrenom, 0, SpringLayout.EAST, lblNumeroEtudiant);
+			sl_Inscriptionl.putConstraint(SpringLayout.WEST, lblNumeroEtudiant, 46, SpringLayout.WEST, Inscriptionl);
+			Inscriptionl.add(lblNumeroEtudiant);
+			
+			JLabel lblNumeroTelephone = new JLabel("Numero Telephone :");
+			sl_Inscriptionl.putConstraint(SpringLayout.SOUTH, lblNumeroEtudiant, -12, SpringLayout.NORTH, lblNumeroTelephone);
+			sl_Inscriptionl.putConstraint(SpringLayout.WEST, lblNumeroTelephone, 49, SpringLayout.WEST, Inscriptionl);
+			sl_Inscriptionl.putConstraint(SpringLayout.NORTH, lblNumeroTelephone, 3, SpringLayout.NORTH, NumTelIns);
+			sl_Inscriptionl.putConstraint(SpringLayout.SOUTH, lblNumeroTelephone, -61, SpringLayout.NORTH, textPane);
+			sl_Inscriptionl.putConstraint(SpringLayout.EAST, lblNumeroTelephone, -6, SpringLayout.WEST, NumTelIns);
+			Inscriptionl.add(lblNumeroTelephone);
+			
+			JLabel lblMotDePasse_1 = new JLabel("Mot de passe :");
+			sl_Inscriptionl.putConstraint(SpringLayout.NORTH, lblMotDePasse_1, 13, SpringLayout.SOUTH, lblNumeroTelephone);
+			sl_Inscriptionl.putConstraint(SpringLayout.WEST, lblMotDePasse_1, 46, SpringLayout.WEST, Inscriptionl);
+			Inscriptionl.add(lblMotDePasse_1);
+			
+			JLabel lblRetaperMdp = new JLabel("Retaper mdp :");
+			sl_Inscriptionl.putConstraint(SpringLayout.NORTH, lblRetaperMdp, 177, SpringLayout.NORTH, Inscriptionl);
+			sl_Inscriptionl.putConstraint(SpringLayout.SOUTH, lblRetaperMdp, -9, SpringLayout.NORTH, lblDescription);
+			sl_Inscriptionl.putConstraint(SpringLayout.SOUTH, lblMotDePasse_1, -11, SpringLayout.NORTH, lblRetaperMdp);
+			sl_Inscriptionl.putConstraint(SpringLayout.WEST, lblRetaperMdp, 46, SpringLayout.WEST, Inscriptionl);
+			Inscriptionl.add(lblRetaperMdp);
+			
 			JPanel Conexion = new JPanel();
 			tabbedPane.addTab("Connexion", null, Conexion, null);
 			SpringLayout sl_Conexion = new SpringLayout();
 			Conexion.setLayout(sl_Conexion);
+			
 			JLabel lblLogin = new JLabel("Login :");
+			sl_Conexion.putConstraint(SpringLayout.NORTH, lblLogin, 58, SpringLayout.NORTH, Conexion);
 			Conexion.add(lblLogin);
 			
 			JLabel lblMotDePasse = new JLabel("Mot de passe :");
+			sl_Conexion.putConstraint(SpringLayout.NORTH, lblMotDePasse, 96, SpringLayout.NORTH, Conexion);
+			sl_Conexion.putConstraint(SpringLayout.WEST, lblMotDePasse, 77, SpringLayout.WEST, Conexion);
+			sl_Conexion.putConstraint(SpringLayout.EAST, lblMotDePasse, -212, SpringLayout.EAST, Conexion);
 			sl_Conexion.putConstraint(SpringLayout.WEST, lblLogin, 0, SpringLayout.WEST, lblMotDePasse);
-			sl_Conexion.putConstraint(SpringLayout.WEST, lblMotDePasse, 62, SpringLayout.WEST, Conexion);
-			sl_Conexion.putConstraint(SpringLayout.EAST, lblMotDePasse, -193, SpringLayout.EAST, Conexion);
 			Conexion.add(lblMotDePasse);
 			
-			LoginCo = new JTextField();
-			sl_Conexion.putConstraint(SpringLayout.NORTH, lblLogin, 2, SpringLayout.NORTH, LoginCo);
-			sl_Conexion.putConstraint(SpringLayout.NORTH, LoginCo, 109, SpringLayout.NORTH, Conexion);
-			Conexion.add(LoginCo);
-			LoginCo.setColumns(10);
+			LoginTf = new JTextField();
+			sl_Conexion.putConstraint(SpringLayout.NORTH, LoginTf, 55, SpringLayout.NORTH, Conexion);
+			sl_Conexion.putConstraint(SpringLayout.WEST, LoginTf, 55, SpringLayout.EAST, lblLogin);
+			sl_Conexion.putConstraint(SpringLayout.SOUTH, LoginTf, 0, SpringLayout.SOUTH, lblLogin);
+			sl_Conexion.putConstraint(SpringLayout.EAST, LoginTf, -118, SpringLayout.EAST, Conexion);
+			Conexion.add(LoginTf);
+			LoginTf.setColumns(10);
 			
 			JButton btnConnexion = new JButton("Connexion");
-			sl_Conexion.putConstraint(SpringLayout.NORTH, btnConnexion, 192, SpringLayout.NORTH, Conexion);
-			sl_Conexion.putConstraint(SpringLayout.WEST, btnConnexion, 113, SpringLayout.WEST, Conexion);
-			sl_Conexion.putConstraint(SpringLayout.SOUTH, btnConnexion, -122, SpringLayout.SOUTH, Conexion);
-			sl_Conexion.putConstraint(SpringLayout.EAST, btnConnexion, -118, SpringLayout.EAST, Conexion);
+			sl_Conexion.putConstraint(SpringLayout.WEST, btnConnexion, 98, SpringLayout.WEST, Conexion);
+			sl_Conexion.putConstraint(SpringLayout.EAST, btnConnexion, -15, SpringLayout.EAST, LoginTf);
 			Conexion.add(btnConnexion);
 			
-			MdpCo = new JPasswordField();
-			sl_Conexion.putConstraint(SpringLayout.NORTH, lblMotDePasse, 3, SpringLayout.NORTH, MdpCo);
-			sl_Conexion.putConstraint(SpringLayout.WEST, LoginCo, 0, SpringLayout.WEST, MdpCo);
-			sl_Conexion.putConstraint(SpringLayout.SOUTH, LoginCo, -19, SpringLayout.NORTH, MdpCo);
-			sl_Conexion.putConstraint(SpringLayout.EAST, LoginCo, 0, SpringLayout.EAST, MdpCo);
-			sl_Conexion.putConstraint(SpringLayout.WEST, MdpCo, 205, SpringLayout.WEST, Conexion);
-			sl_Conexion.putConstraint(SpringLayout.SOUTH, MdpCo, -23, SpringLayout.NORTH, btnConnexion);
-			sl_Conexion.putConstraint(SpringLayout.EAST, MdpCo, -75, SpringLayout.EAST, Conexion);
-			Conexion.add(MdpCo);
+			passwordField = new JPasswordField();
+			sl_Conexion.putConstraint(SpringLayout.NORTH, btnConnexion, 24, SpringLayout.SOUTH, passwordField);
+			sl_Conexion.putConstraint(SpringLayout.SOUTH, btnConnexion, 71, SpringLayout.SOUTH, passwordField);
+			sl_Conexion.putConstraint(SpringLayout.NORTH, passwordField, -3, SpringLayout.NORTH, lblMotDePasse);
+			sl_Conexion.putConstraint(SpringLayout.WEST, passwordField, 162, SpringLayout.WEST, Conexion);
+			sl_Conexion.putConstraint(SpringLayout.EAST, passwordField, 0, SpringLayout.EAST, LoginTf);
+			Conexion.add(passwordField);
 			
-			JLabel MessageCo = new JLabel("");
-			sl_Conexion.putConstraint(SpringLayout.WEST, MessageCo, 39, SpringLayout.WEST, Conexion);
-			sl_Conexion.putConstraint(SpringLayout.SOUTH, MessageCo, -19, SpringLayout.NORTH, lblLogin);
-			MessageCo.setForeground(Color.RED);
-			MessageCo.setFont(new Font("AR JULIAN", Font.PLAIN, 24));
-			Conexion.add(MessageCo);
+			JLabel lblAnnonceEnLigne = new JLabel("Annonce en ligne :");
+			springLayout.putConstraint(SpringLayout.WEST, lblAnnonceEnLigne, 113, SpringLayout.EAST, tabbedPane);
+			springLayout.putConstraint(SpringLayout.SOUTH, lblAnnonceEnLigne, -13, SpringLayout.NORTH, list);
+			springLayout.putConstraint(SpringLayout.EAST, lblAnnonceEnLigne, 221, SpringLayout.EAST, tabbedPane);
+			getContentPane().add(lblAnnonceEnLigne);
 			
-////////////////////////// Partie graphique /////////////////////////////////////////////////////////////////		
-			JPanel Inscription = new JPanel();
-			tabbedPane.addTab("Inscription", null, Inscription, null);
-			SpringLayout sl_Inscription = new SpringLayout();
-			Inscription.setLayout(sl_Inscription);
+			JTextPane textPane_1 = new JTextPane();
+			springLayout.putConstraint(SpringLayout.WEST, textPane_1, -524, SpringLayout.EAST, list);
+			springLayout.putConstraint(SpringLayout.SOUTH, textPane_1, -119, SpringLayout.SOUTH, getContentPane());
+			springLayout.putConstraint(SpringLayout.EAST, textPane_1, -21, SpringLayout.EAST, getContentPane());
+			getContentPane().add(textPane_1);
 			
-			JButton btnInscription = new JButton("Inscription");
-			sl_Inscription.putConstraint(SpringLayout.SOUTH, btnInscription, -10, SpringLayout.SOUTH, Inscription);
-			sl_Inscription.putConstraint(SpringLayout.EAST, btnInscription, -81, SpringLayout.EAST, Inscription);
-			Inscription.add(btnInscription);
+			JLabel lblMessage = new JLabel("Message :");
+			springLayout.putConstraint(SpringLayout.SOUTH, lblMessage, -333, SpringLayout.SOUTH, getContentPane());
+			springLayout.putConstraint(SpringLayout.NORTH, textPane_1, 6, SpringLayout.SOUTH, lblMessage);
+			springLayout.putConstraint(SpringLayout.WEST, lblMessage, 0, SpringLayout.WEST, textPane_1);
+			getContentPane().add(lblMessage);
 			
-			NomIns = new JTextField();
-			Inscription.add(NomIns);
-			NomIns.setColumns(10);
+			JTabbedPane tabbedPane_1 = new JTabbedPane(JTabbedPane.TOP);
+			springLayout.putConstraint(SpringLayout.NORTH, tabbedPane_1, 49, SpringLayout.SOUTH, tabbedPane);
+			springLayout.putConstraint(SpringLayout.WEST, tabbedPane_1, 22, SpringLayout.WEST, getContentPane());
+			springLayout.putConstraint(SpringLayout.SOUTH, tabbedPane_1, 333, SpringLayout.SOUTH, tabbedPane);
+			springLayout.putConstraint(SpringLayout.EAST, tabbedPane_1, 493, SpringLayout.WEST, getContentPane());
+			getContentPane().add(tabbedPane_1);
 			
-			PrenomIns = new JTextField();
-			sl_Inscription.putConstraint(SpringLayout.WEST, PrenomIns, 156, SpringLayout.WEST, Inscription);
-			sl_Inscription.putConstraint(SpringLayout.SOUTH, NomIns, -6, SpringLayout.NORTH, PrenomIns);
-			sl_Inscription.putConstraint(SpringLayout.EAST, NomIns, 0, SpringLayout.EAST, PrenomIns);
-			sl_Inscription.putConstraint(SpringLayout.NORTH, PrenomIns, 98, SpringLayout.NORTH, Inscription);
-			PrenomIns.setColumns(10);
-			Inscription.add(PrenomIns);
+			JPanel Deposer = new JPanel();
+			tabbedPane_1.addTab("Deposer une annonce", null, Deposer, null);
+			SpringLayout sl_Deposer = new SpringLayout();
+			Deposer.setLayout(sl_Deposer);
 			
-			EmailIns = new JTextField();
-			sl_Inscription.putConstraint(SpringLayout.NORTH, EmailIns, 124, SpringLayout.NORTH, Inscription);
-			sl_Inscription.putConstraint(SpringLayout.SOUTH, EmailIns, -217, SpringLayout.SOUTH, Inscription);
-			sl_Inscription.putConstraint(SpringLayout.SOUTH, PrenomIns, -6, SpringLayout.NORTH, EmailIns);
-			EmailIns.setColumns(10);
-			Inscription.add(EmailIns);
+			JEditorPane editorPane = new JEditorPane();
+			sl_Deposer.putConstraint(SpringLayout.NORTH, editorPane, 10, SpringLayout.NORTH, Deposer);
+			sl_Deposer.putConstraint(SpringLayout.WEST, editorPane, -376, SpringLayout.EAST, Deposer);
+			sl_Deposer.putConstraint(SpringLayout.EAST, editorPane, -38, SpringLayout.EAST, Deposer);
+			Deposer.add(editorPane);
 			
-			NumEtuIns = new JTextField();
-			sl_Inscription.putConstraint(SpringLayout.NORTH, NumEtuIns, 7, SpringLayout.SOUTH, EmailIns);
-			sl_Inscription.putConstraint(SpringLayout.WEST, NumEtuIns, 0, SpringLayout.WEST, NomIns);
-			sl_Inscription.putConstraint(SpringLayout.EAST, NumEtuIns, 0, SpringLayout.EAST, NomIns);
-			Inscription.add(NumEtuIns);
-			NumEtuIns.setColumns(10);
+			JLabel lblObjet = new JLabel("Objet :");
+			sl_Deposer.putConstraint(SpringLayout.SOUTH, lblObjet, 0, SpringLayout.SOUTH, editorPane);
+			sl_Deposer.putConstraint(SpringLayout.EAST, lblObjet, -22, SpringLayout.WEST, editorPane);
+			Deposer.add(lblObjet);
 			
-			NumTelIns = new JTextField();
-			sl_Inscription.putConstraint(SpringLayout.SOUTH, NumEtuIns, -8, SpringLayout.NORTH, NumTelIns);
-			sl_Inscription.putConstraint(SpringLayout.NORTH, NumTelIns, 183, SpringLayout.NORTH, Inscription);
-			sl_Inscription.putConstraint(SpringLayout.EAST, NumTelIns, 0, SpringLayout.EAST, NomIns);
-			NumTelIns.setColumns(10);
-			Inscription.add(NumTelIns);
+			JEditorPane editorPane_1 = new JEditorPane();
+			sl_Deposer.putConstraint(SpringLayout.NORTH, editorPane_1, 6, SpringLayout.SOUTH, editorPane);
+			sl_Deposer.putConstraint(SpringLayout.WEST, editorPane_1, 0, SpringLayout.WEST, editorPane);
+			sl_Deposer.putConstraint(SpringLayout.SOUTH, editorPane_1, 194, SpringLayout.SOUTH, editorPane);
+			sl_Deposer.putConstraint(SpringLayout.EAST, editorPane_1, 0, SpringLayout.EAST, editorPane);
+			Deposer.add(editorPane_1);
 			
-			JLabel lblDescription = new JLabel("Description :");
-			Inscription.add(lblDescription);
+			JLabel lblDesciption = new JLabel("Desciption :");
+			sl_Deposer.putConstraint(SpringLayout.NORTH, lblDesciption, 6, SpringLayout.SOUTH, lblObjet);
+			sl_Deposer.putConstraint(SpringLayout.EAST, lblDesciption, 0, SpringLayout.EAST, lblObjet);
+			Deposer.add(lblDesciption);
 			
-			JLabel lblPrenom = new JLabel("Prenom :");
-			sl_Inscription.putConstraint(SpringLayout.WEST, lblPrenom, 32, SpringLayout.WEST, Inscription);
-			sl_Inscription.putConstraint(SpringLayout.EAST, lblPrenom, -21, SpringLayout.WEST, PrenomIns);
-			sl_Inscription.putConstraint(SpringLayout.WEST, lblDescription, 0, SpringLayout.WEST, lblPrenom);
-			sl_Inscription.putConstraint(SpringLayout.NORTH, lblPrenom, 2, SpringLayout.NORTH, PrenomIns);
-			Inscription.add(lblPrenom);
+			JPanel panel = new JPanel();
+			tabbedPane_1.addTab("Repondre a une annonce", null, panel, null);
+			SpringLayout sl_panel = new SpringLayout();
+			panel.setLayout(sl_panel);
 			
-			JLabel lblNumeroEtudiant = new JLabel("Numero Etudiant :");
-			sl_Inscription.putConstraint(SpringLayout.EAST, lblNumeroEtudiant, 0, SpringLayout.EAST, lblPrenom);
-			Inscription.add(lblNumeroEtudiant);
+			JLabel lblReferenceAnnonce = new JLabel("Reference annonce :");
+			sl_panel.putConstraint(SpringLayout.NORTH, lblReferenceAnnonce, 10, SpringLayout.NORTH, panel);
+			sl_panel.putConstraint(SpringLayout.WEST, lblReferenceAnnonce, 42, SpringLayout.WEST, panel);
+			panel.add(lblReferenceAnnonce);
 			
-			JLabel lblNumeroTelephone = new JLabel("Numero Telephone :");
-			sl_Inscription.putConstraint(SpringLayout.NORTH, lblNumeroTelephone, 125, SpringLayout.NORTH, Inscription);
-			sl_Inscription.putConstraint(SpringLayout.SOUTH, lblNumeroTelephone, -248, SpringLayout.SOUTH, Inscription);
-			sl_Inscription.putConstraint(SpringLayout.WEST, EmailIns, 6, SpringLayout.EAST, lblNumeroTelephone);
-			sl_Inscription.putConstraint(SpringLayout.WEST, lblNumeroTelephone, 49, SpringLayout.WEST, Inscription);
-			sl_Inscription.putConstraint(SpringLayout.EAST, lblNumeroTelephone, -218, SpringLayout.EAST, Inscription);
-			Inscription.add(lblNumeroTelephone);
+			textField = new JTextField();
+			sl_panel.putConstraint(SpringLayout.NORTH, textField, 10, SpringLayout.NORTH, panel);
+			sl_panel.putConstraint(SpringLayout.WEST, textField, 51, SpringLayout.EAST, lblReferenceAnnonce);
+			sl_panel.putConstraint(SpringLayout.EAST, textField, 170, SpringLayout.EAST, lblReferenceAnnonce);
+			panel.add(textField);
+			textField.setColumns(10);
 			
-			JLabel lblMotDePasse_1 = new JLabel("Mot de passe :");
-			sl_Inscription.putConstraint(SpringLayout.WEST, lblMotDePasse_1, 0, SpringLayout.WEST, lblDescription);
-			Inscription.add(lblMotDePasse_1);
+			textField_1 = new JTextField();
+			sl_panel.putConstraint(SpringLayout.NORTH, textField_1, 9, SpringLayout.SOUTH, textField);
+			sl_panel.putConstraint(SpringLayout.EAST, textField_1, -33, SpringLayout.EAST, panel);
+			panel.add(textField_1);
+			textField_1.setColumns(10);
 			
-			JLabel lblRetaperMdp = new JLabel("Retaper mdp :");
-			sl_Inscription.putConstraint(SpringLayout.WEST, lblRetaperMdp, 0, SpringLayout.WEST, lblDescription);
-			Inscription.add(lblRetaperMdp);
+			JLabel lblTitre = new JLabel("Titre :");
+			sl_panel.putConstraint(SpringLayout.WEST, textField_1, 26, SpringLayout.EAST, lblTitre);
+			sl_panel.putConstraint(SpringLayout.NORTH, lblTitre, 18, SpringLayout.SOUTH, lblReferenceAnnonce);
+			sl_panel.putConstraint(SpringLayout.WEST, lblTitre, 0, SpringLayout.WEST, lblReferenceAnnonce);
+			panel.add(lblTitre);
 			
-			JTextArea DescripInsPane = new JTextArea();
-			sl_Inscription.putConstraint(SpringLayout.NORTH, lblDescription, 3, SpringLayout.NORTH, DescripInsPane);
-			sl_Inscription.putConstraint(SpringLayout.EAST, lblDescription, -35, SpringLayout.WEST, DescripInsPane);
-			sl_Inscription.putConstraint(SpringLayout.NORTH, DescripInsPane, 267, SpringLayout.NORTH, Inscription);
-			sl_Inscription.putConstraint(SpringLayout.WEST, DescripInsPane, 158, SpringLayout.WEST, Inscription);
-			sl_Inscription.putConstraint(SpringLayout.SOUTH, DescripInsPane, -6, SpringLayout.NORTH, btnInscription);
-			sl_Inscription.putConstraint(SpringLayout.EAST, DescripInsPane, -29, SpringLayout.EAST, Inscription);
-			Inscription.add(DescripInsPane);
+			JEditorPane editorPane_2 = new JEditorPane();
+			sl_panel.putConstraint(SpringLayout.NORTH, editorPane_2, 16, SpringLayout.SOUTH, textField_1);
+			sl_panel.putConstraint(SpringLayout.WEST, editorPane_2, 0, SpringLayout.WEST, textField_1);
+			sl_panel.putConstraint(SpringLayout.SOUTH, editorPane_2, 167, SpringLayout.SOUTH, textField_1);
+			sl_panel.putConstraint(SpringLayout.EAST, editorPane_2, 0, SpringLayout.EAST, textField_1);
+			panel.add(editorPane_2);
 			
-			JLabel lblNumeroTelephone_1 = new JLabel("Numero Telephone :");
-			sl_Inscription.putConstraint(SpringLayout.NORTH, lblNumeroTelephone_1, 184, SpringLayout.NORTH, Inscription);
-			sl_Inscription.putConstraint(SpringLayout.SOUTH, lblNumeroEtudiant, -12, SpringLayout.NORTH, lblNumeroTelephone_1);
-			sl_Inscription.putConstraint(SpringLayout.NORTH, lblMotDePasse_1, 9, SpringLayout.SOUTH, lblNumeroTelephone_1);
-			sl_Inscription.putConstraint(SpringLayout.WEST, lblNumeroTelephone_1, 0, SpringLayout.WEST, lblDescription);
-			Inscription.add(lblNumeroTelephone_1);
+			JLabel lblMessage_1 = new JLabel("Message :");
+			sl_panel.putConstraint(SpringLayout.NORTH, lblMessage_1, 0, SpringLayout.NORTH, editorPane_2);
+			sl_panel.putConstraint(SpringLayout.WEST, lblMessage_1, 20, SpringLayout.WEST, panel);
+			panel.add(lblMessage_1);
 			
-			JLabel lblEmail = new JLabel("Email :");
-			sl_Inscription.putConstraint(SpringLayout.NORTH, lblNumeroEtudiant, 15, SpringLayout.SOUTH, lblEmail);
-			sl_Inscription.putConstraint(SpringLayout.NORTH, lblEmail, 3, SpringLayout.NORTH, EmailIns);
-			sl_Inscription.putConstraint(SpringLayout.WEST, lblEmail, 0, SpringLayout.WEST, lblDescription);
-			Inscription.add(lblEmail);
-			
-			JLabel lblNom = new JLabel("Nom :");
-			sl_Inscription.putConstraint(SpringLayout.NORTH, lblNom, 0, SpringLayout.NORTH, NomIns);
-			sl_Inscription.putConstraint(SpringLayout.WEST, lblNom, 32, SpringLayout.WEST, Inscription);
-			Inscription.add(lblNom);
-			
-			LoginIns = new JTextField();
-			sl_Inscription.putConstraint(SpringLayout.WEST, LoginIns, 0, SpringLayout.WEST, NomIns);
-			sl_Inscription.putConstraint(SpringLayout.SOUTH, LoginIns, -6, SpringLayout.NORTH, NomIns);
-			LoginIns.setColumns(10);
-			Inscription.add(LoginIns);
-			
-			JLabel lblLogin_1 = new JLabel("Login :");
-			sl_Inscription.putConstraint(SpringLayout.NORTH, lblLogin_1, 0, SpringLayout.NORTH, LoginIns);
-			sl_Inscription.putConstraint(SpringLayout.WEST, lblLogin_1, 32, SpringLayout.WEST, Inscription);
-			Inscription.add(lblLogin_1);
-			
-			JLabel MessageIns = new JLabel("MessageIns");
-			sl_Inscription.putConstraint(SpringLayout.NORTH, MessageIns, 10, SpringLayout.NORTH, Inscription);
-			sl_Inscription.putConstraint(SpringLayout.WEST, MessageIns, 0, SpringLayout.WEST, lblNumeroTelephone);
-			MessageIns.setFont(new Font("AR JULIAN", Font.PLAIN, 16));
-			MessageIns.setForeground(Color.RED);
-			Inscription.add(MessageIns);
-			
-			Mdp1 = new JPasswordField();
-			sl_Inscription.putConstraint(SpringLayout.SOUTH, NumTelIns, -6, SpringLayout.NORTH, Mdp1);
-			sl_Inscription.putConstraint(SpringLayout.EAST, lblMotDePasse_1, -29, SpringLayout.WEST, Mdp1);
-			sl_Inscription.putConstraint(SpringLayout.WEST, Mdp1, 0, SpringLayout.WEST, NomIns);
-			sl_Inscription.putConstraint(SpringLayout.EAST, Mdp1, 0, SpringLayout.EAST, NomIns);
-			Inscription.add(Mdp1);
-			
-			Mdp2 = new JPasswordField();
-			sl_Inscription.putConstraint(SpringLayout.NORTH, lblRetaperMdp, 3, SpringLayout.NORTH, Mdp2);
-			sl_Inscription.putConstraint(SpringLayout.SOUTH, Mdp1, -6, SpringLayout.NORTH, Mdp2);
-			sl_Inscription.putConstraint(SpringLayout.WEST, Mdp2, 0, SpringLayout.WEST, NomIns);
-			sl_Inscription.putConstraint(SpringLayout.SOUTH, Mdp2, -6, SpringLayout.NORTH, DescripInsPane);
-			sl_Inscription.putConstraint(SpringLayout.EAST, Mdp2, 0, SpringLayout.EAST, NomIns);
-			Inscription.add(Mdp2);
-			MessageIns.setVisible(false);
-			
-////////////////////////// Action appui sur bouton Inscription ///////////////////////////////////////
-			btnInscription.addActionListener(new ActionListener() {		
-				public void actionPerformed(ActionEvent arg0) {	
-					String etat = s1.incription(					// recuperartion valeur label
-							LoginIns.getText(),
-							NomIns.getText(),
-							PrenomIns.getText(),
-							EmailIns.getText(),
-							NumEtuIns.getText(),
-							NumTelIns.getText(),
-							Mdp1.getText(),
-							Mdp2.getText(),
-							DescripInsPane.getText()
-							)	;	
-					if(etat.equals("Reussite")){					// Si inscription valide par le systeme	
-						 MessageIns.setVisible(true);
-						 MessageIns.setText("Insciption reussite");
-						 MessageIns.setForeground(Color.BLACK);
-						 LoginIns.setText(null);		
-						 NomIns.setText(null) ;
-						 PrenomIns.setText(null);
-						 EmailIns.setText(null);
-						 NumEtuIns.setText(null);
-						 NumTelIns.setText(null);
-						 Mdp1.setText(null);
-						 Mdp2.setText(null);
-						 DescripInsPane.setText(" "); 
-					}
-					else if(etat.equals("ExisteDeja")){				// Si login deja existant
-						MessageIns.setForeground(Color.RED);
-						MessageIns.setText("Profil deja existant");
-						MessageIns.setVisible(true);
-					}
-					else if(etat.equals("ChampsManquants")){		// Si inscription incomplete
-						MessageIns.setForeground(Color.RED);
-						MessageIns.setText("Tous les champs sont obligatoire");
-						MessageIns.setVisible(true);
-					}
-					else if(etat.equals("MDPIncorrect")){			// Si erreur dans la confirmatin des deux mots de passe
-						MessageIns.setForeground(Color.RED);
-						MessageIns.setText("Mot de passe incorrect");
-						MessageIns.setVisible(true);
-					}
-					}
-				});
 		
-//////////////////////////Action appui sur bouton Connexion  ///////////////////////////////////////	
-				btnConnexion.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
-						 String etat = s1.connexion(LoginCo.getText(), MdpCo.getText());
-						 if(etat=="Connexion"){							// Si login et mot de passe confirme par le systeme
-								 Inscription.disable();
-								 Inscription.invalidate();
-								 MessageCo.setForeground(Color.BLACK);
-								 MessageCo.setText("Vous etes connecte : "+LoginCo.getText());
-								 MessageCo.setVisible(true);
-								 LoginCo.setText(null);
-								 MdpCo.setText(null);
-								  }
-							 else if (etat=="Erreur"){					// Si erreur de connexion
-									 MessageCo.setText("Erreur de connexion");
-									 MessageCo.setForeground(Color.RED);
-									 MessageCo.setVisible(true);
-								 }
-							 }
-				});
-	}
-// Getter utile	
-	public SystemPartage getSystem(){
-		return s1;
 	}
 }

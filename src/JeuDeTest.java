@@ -1,7 +1,11 @@
+
 public class JeuDeTest {
+
 	public static void main(String[] args){
-		String arglist[]={"vide"};
-		SystemPartage S = (SystemPartage) Factory.create("SystemPartage", arglist);  // Creation du systeme
+		Annonce a1 = (Annonce) Factory.create("Annonce");
+		a1.ajouter();
+		
+		Commande c1 = (Commande) Factory.create("Commande");
+		c1.changer_etat();
 	}
 }
-
