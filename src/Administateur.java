@@ -1,4 +1,4 @@
-
+// Classe administrateur : mode profil avec options supplementaire
 public class Administateur {
 	private String nom_administrateur;
 	private String prenom_administrateur;
